@@ -1,6 +1,6 @@
-SDL2 program!
+# SDL2 program!
 
-How to build?
+## How to build?
 1. We should use gcc compiler (specifically, mingw64-12.2)
 2. Compile source code with linking the SDL2 Library
    -  add -l$(path of SDL2 includes) for including SDL2 includes when compile.
