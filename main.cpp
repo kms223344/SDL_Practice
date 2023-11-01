@@ -10,7 +10,7 @@ int main( int argc, char* args[] )
     {
         if(!loadMedia()) printf("Failed to Load Media!\n");
         else
-        {
+        { 
             SDL_Event e; bool quit = false;
             gCurrentSurface = gKeyPressSurfaces[Key_Press_Surface_Default];
             while(!quit)
@@ -33,7 +33,7 @@ int main( int argc, char* args[] )
                         case SDLK_LEFT:
                             gCurrentSurface = gKeyPressSurfaces[Key_Press_Surface_Left];
                             printf("Left\n");
-                            break;
+                            break; 
                         case SDLK_RIGHT:
                             gCurrentSurface = gKeyPressSurfaces[Key_Press_Surface_Right];
                             printf("Right\n");
@@ -44,9 +44,10 @@ int main( int argc, char* args[] )
                         }
                     }
                 }
-                SDL_BlitSurface(gCurrentSurface, NULL, gScreenSurface, NULL);
+                SDL_Rect strechRect = {SCREEN_WIDTH/3, SCREEN_HEIGHT/3,SCREEN_WIDTH/3, SCREEN_HEIGHT/3};
+                SDL_BlitScaled(gCurrentSurface, NULL, gScreenSurface, &strechRect);
                 SDL_UpdateWindowSurface(gWindow);
-            }
+            } 
         } 
     }
     close();

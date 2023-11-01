@@ -30,14 +30,22 @@ bool init()
         else gScreenSurface = SDL_GetWindowSurface( gWindow );
     }
 
-    return true;
+    return true; 
 }
 
 SDL_Surface* loadSurface(std::string path)
 {
     SDL_Surface *loadSurface = SDL_LoadBMP(path.c_str());
     if(loadSurface == NULL) printf("Unable to load image %s!! SDL_ERROR: %s\n", path.c_str(), SDL_GetError());
-    
+    else
+    {
+        SDL_Surface *tmp = loadSurface;
+        loadSurface = SDL_ConvertSurface(loadSurface, gScreenSurface->format, 0);
+        if(loadSurface == NULL)
+            printf("Unable to optimize image %s!! SDL_ERROR: %s\n", path.c_str(), SDL_GetError());
+        
+        SDL_FreeSurface(tmp); 
+    }
     return loadSurface;
 }
 
