@@ -4,3 +4,4 @@ obj/
 *.depend
 *.layout
 SDL2.dll
+SDL2_image.dll
